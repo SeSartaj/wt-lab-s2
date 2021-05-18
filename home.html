@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="bootstrap5-min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WT Assignment 2</title>
+    <script src="jquery3.6-dev.js"></script>
+    
+    <style>
+
+        /* div {
+            border: 1px solid yellow;
+        } */
+        .c-container {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    </style>
+
+
+</head>
+<body>
+    
+    <div class="c-container bg-light">
+    <div class="container " >
+        <div class="row mt-5">
+            <h1 class="text-center">Web Technologies | Comsats lahore</h1>
+        </div>
+        <div class="row mt-5 justify-content-around" >
+            <div class="c-list col-md-7 border mb-5 bg-white rounded shadow-sm">
+                <div class="table-responsive p-3 ">
+                    <table class="table table-hover">
+                        <thead >
+                           <tr>
+                               <th>Username</th>
+                               <th>Email</th>
+                               <th>Action</th>
+                           </tr>
+                        </thead>
+
+                        <tbody id="userList" >
+                            <tr>
+                                <td>seartaj</td>
+                                <td>sartaj@gmail.com</td>
+                                <td><button>Update</button></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>                  
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid ">
+        <footer class="row">
+            <div class="d-flex mt-5 p-5 mb-0 justify-content-center align-items-center bg-dark text-white w-100">
+                <p class="text-center">
+                    Made with &#10084;&#65039; by: 
+                    Sartaj Ahmad (FA18-BSE-402)
+
+                </p>
+            </div>
+        </footer>
+    </div>
+
+
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            fetch('https://jsonplaceholder.typicode.com/users')
+            .then((response) => response.json())
+            .then((json) => {
+                for (e of json) {
+                    $("#userList").append(`
+                        <tr data-id="${e.id}">
+                            <td>${e.username}</td>
+                            <td>${e.email}</td>
+                            <td><button data-userid="${e.id}" onclick="return updateUser(${e.id})">Update</button></td>
+                        </tr>
+                    `)
+                }
+            });
+        });
+
+        updateUser = (id) => {
+            // const id = this.dataset.userid;
+            console.log(id);
+
+        }
+
+        draw
+    </script>
+</body>
+</html>
+
+
